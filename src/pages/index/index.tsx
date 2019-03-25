@@ -1,23 +1,17 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import { AtTabs, AtTabsPane } from 'taro-ui'
+import Time from '../time'
 
-import './index.scss'
-
-type PageStateProps = {
-  counterStore: {
-    counter: number
-    increment: Function
-    decrement: Function
-    incrementAsync: Function
-  }
+type IProps = {
+  current: number
 }
-
 
 @inject('counterStore')
 @observer
-class Index extends Component<PageStateProps,{}> {
+class Index extends Component<{}, IProps> {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -27,6 +21,13 @@ class Index extends Component<PageStateProps,{}> {
    */
   config: Config = {
     navigationBarTitleText: '首页'
+  }
+
+  constructor() {
+    super(...arguments)
+    this.state = {
+      current: 0
+    }
   }
 
   componentWillMount() {}
@@ -43,32 +44,35 @@ class Index extends Component<PageStateProps,{}> {
 
   componentDidHide() {}
 
-  increment = () => {
-    const { counterStore } = this.props
-    counterStore.increment()
-  }
-
-  decrement = () => {
-    const { counterStore } = this.props
-    counterStore.decrement()
-  }
-
-  incrementAsync = () => {
-    const { counterStore } = this.props
-    counterStore.incrementAsync()
+  handleClick(value) {
+    this.setState({
+      current: value
+    })
   }
 
   render() {
-    const {
-      counterStore: { counter }
-    } = this.props
+    const tabList = [{ title: '时间' }, { title: '行为' }, { title: '人' }]
+
     return (
-      <View className='index'>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
-      </View>
+      <AtTabs
+        current={this.state.current}
+        tabList={tabList}
+        onClick={this.handleClick.bind(this)}
+      >
+        <AtTabsPane current={this.state.current} index={0}>
+          <Time />
+        </AtTabsPane>
+        <AtTabsPane current={this.state.current} index={1}>
+          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>
+            标签页二的内容
+          </View>
+        </AtTabsPane>
+        <AtTabsPane current={this.state.current} index={2}>
+          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>
+            标签页三的内容
+          </View>
+        </AtTabsPane>
+      </AtTabs>
     )
   }
 }
