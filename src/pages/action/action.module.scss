@@ -1,0 +1,27 @@
+.card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card_item {
+  display: flex;
+  width: 50%;
+  height: 135px;
+  justify-content: center;
+  align-items: center;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.list_item {
+  display: flex;
+  height: 120px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;  
+  border-bottom:1px solid #ddd;
+}

@@ -1,17 +1,18 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import Time from '../time'
+import Action from '../action'
+import Count from '../count'
 
-type IProps = {
+type IState = {
   current: number
 }
 
 @inject('counterStore')
 @observer
-class Index extends Component<{}, IProps> {
+class Index extends Component<{}, IState> {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -63,14 +64,10 @@ class Index extends Component<{}, IProps> {
           <Time />
         </AtTabsPane>
         <AtTabsPane current={this.state.current} index={1}>
-          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>
-            标签页二的内容
-          </View>
+          <Action />
         </AtTabsPane>
         <AtTabsPane current={this.state.current} index={2}>
-          <View style='padding: 100px 50px;background-color: #FAFBFC;text-align: center;'>
-            标签页三的内容
-          </View>
+          <Count />
         </AtTabsPane>
       </AtTabs>
     )

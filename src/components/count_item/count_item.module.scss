@@ -1,0 +1,23 @@
+.card {
+  padding: 0 10px;
+}
+
+.card_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  border-bottom: 1px solid #ddd;
+  height: 100px;
+}
+
+.card_body{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.card_progres {
+  > Text {
+    font-size: 24px;
+  }
+}

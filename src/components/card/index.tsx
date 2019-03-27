@@ -3,7 +3,7 @@ import { View, Text, Button } from '@tarojs/components'
 import styles from './card.module.scss'
 import { AtAvatar, AtIcon } from 'taro-ui'
 
-export interface IState {
+interface IState {
   showBtn: boolean
 }
 
@@ -61,7 +61,7 @@ export default class Card extends Component<{}, IState> {
             blanditiis distinctio! Sapiente.
           </View>
         </View>
-        {this.state.showBtn ? btns : null}
+        {this.state.showBtn && btns}
       </View>
     )
   }
