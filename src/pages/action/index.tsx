@@ -56,6 +56,7 @@ export default class Action extends Component {
       <View>
         {card}
         {listItem}
+
       </View>
     )
   }

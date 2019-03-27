@@ -22,10 +22,18 @@ export default class Card extends Component<{}, IState> {
     })
   }
 
+  jump = e => {
+    e.stopPropagation()
+    console.log('========jump')
+    Taro.navigateTo({
+      url: '/pages/add_task/index?id=2&type=test'
+    })
+  }
+
   render() {
     const btns = (
       <View className={styles.btns}>
-        <Button>
+        <Button onClick={this.jump}>
           <AtIcon value='add' size='10' color='#F00' />
           <Text>新建任务</Text>
         </Button>

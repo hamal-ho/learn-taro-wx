@@ -1,4 +1,6 @@
 {
     "prettier.semi": false,
-    "prettier.jsxSingleQuote": true
+    "prettier.jsxSingleQuote": true,
+    "prettier.stylelintIntegration": false,
+    "prettier.tslintIntegration": true
 }

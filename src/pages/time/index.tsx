@@ -11,8 +11,6 @@ export default class Time extends Component {
     return (
       <View>
         <Card />
-        <Card />
-        <Card />
       </View>
     )
   }

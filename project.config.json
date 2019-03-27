@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "taro-wx",
 	"description": "学习使用taro开发小程序",
-	"appid": "touristappid",
+	"appid": "wxf8308ecf59d34921",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
