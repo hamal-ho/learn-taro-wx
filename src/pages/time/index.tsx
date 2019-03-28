@@ -7,10 +7,16 @@ export default class Time extends Component {
     super(...arguments)
   }
 
+  tapBtn(idx: number) {
+    console.log(idx, '下标')
+  }
+
+
+
   render() {
     return (
       <View>
-        <Card />
+        <Card onBtn={this.tapBtn} />
       </View>
     )
   }

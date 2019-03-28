@@ -3,13 +3,19 @@ import { View, Text, Button } from '@tarojs/components'
 import styles from './card.module.scss'
 import { AtAvatar, AtIcon } from 'taro-ui'
 
+export interface CardProps {
+  onBtn?: (idx: number) => void
+}
+
 interface IState {
   showBtn: boolean
 }
 
-export default class Card extends Component<{}, IState> {
-  constructor() {
-    super(...arguments)
+export default class Card extends Component<CardProps, IState> {
+  
+
+  constructor(props) {
+    super(props)
     this.state = { showBtn: false }
   }
 
@@ -22,18 +28,19 @@ export default class Card extends Component<{}, IState> {
     })
   }
 
-  jump = e => {
+  tap(idx, e) {
     e.stopPropagation()
-    console.log('========jump')
-    Taro.navigateTo({
-      url: '/pages/add_task/index?id=2&type=test'
-    })
+    this.props.onBtn && this.props.onBtn(idx)
   }
 
   render() {
+
+
+
+
     const btns = (
       <View className={styles.btns}>
-        <Button onClick={this.jump}>
+        <Button onClick={this.tap.bind(this, 0)}>
           <AtIcon value='add' size='10' color='#F00' />
           <Text>新建任务</Text>
         </Button>
