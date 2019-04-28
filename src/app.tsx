@@ -2,7 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Index from './pages/index'
 import 'taro-ui/dist/style/index.scss'
-import counterStore from './store/counter'
+import { tabStore } from './store/tabStore'
 import '@tarojs/async-await'
 
 import './app.scss'
@@ -14,7 +14,7 @@ import './app.scss'
 // }
 
 const store = {
-  counterStore
+  tabStore
 }
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: ['pages/index/index'],
+    pages: ['pages/index/index','pages/user/user'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

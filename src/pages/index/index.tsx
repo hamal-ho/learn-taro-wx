@@ -1,18 +1,12 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { observer, inject } from '@tarojs/mobx'
-import { AtTabs, AtTabsPane } from 'taro-ui'
-import Time from '../time'
-import Action from '../action'
-import Count from '../count'
+import { AtTabBar } from 'taro-ui'
+import { observable } from 'mobx'
+import ComTabs from '../../components/com-tabs/com-tabs'
 
-type IState = {
-  current: number
-}
-
-@inject('counterStore')
 @observer
-class Index extends Component<{}, IState> {
+class Index extends Component<{}, {}> {
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -21,14 +15,11 @@ class Index extends Component<{}, IState> {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '明细'
   }
 
   constructor() {
     super(...arguments)
-    this.state = {
-      current: 0
-    }
   }
 
   componentWillMount() {}
@@ -45,32 +36,8 @@ class Index extends Component<{}, IState> {
 
   componentDidHide() {}
 
-  handleClick(value) {
-    this.setState({
-      current: value
-    })
-  }
-
   render() {
-    const tabList = [{ title: '时间' }, { title: '行为' }, { title: '人' }]
-
-    return (
-      <AtTabs
-        current={this.state.current}
-        tabList={tabList}
-        onClick={this.handleClick.bind(this)}
-      >
-        <AtTabsPane current={this.state.current} index={0}>
-          <Time />
-        </AtTabsPane>
-        <AtTabsPane current={this.state.current} index={1}>
-          <Action />
-        </AtTabsPane>
-        <AtTabsPane current={this.state.current} index={2}>
-          <Count />
-        </AtTabsPane>
-      </AtTabs>
-    )
+    return <ComTabs />
   }
 }
 
