@@ -12,12 +12,14 @@ interface IState {
 }
 
 export default class Card extends Component<CardProps, IState> {
-  
-
   constructor(props) {
     super(props)
     this.state = { showBtn: false }
   }
+
+  componentDidMount() {}
+
+  componentWillUnmount() {}
 
   toggle = e => {
     e.stopPropagation()
@@ -34,10 +36,6 @@ export default class Card extends Component<CardProps, IState> {
   }
 
   render() {
-
-
-
-
     const btns = (
       <View className={styles.btns}>
         <Button onClick={this.tap.bind(this, 0)}>
