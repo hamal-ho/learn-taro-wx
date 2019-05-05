@@ -1,3 +1,6 @@
+/* eslint-disable import/no-commonjs */
+const path = require('path')
+
 const config = {
   projectName: 'taro-wx',
   date: '2019-3-25',
@@ -25,6 +28,10 @@ const config = {
     }
   },
   defineConstants: {
+  },
+  alias:{
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/store': path.resolve(__dirname, '..', 'src/store')
   },
   copy: {
     patterns: [
@@ -70,6 +77,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     module: {
       postcss: {
         autoprefixer: {
