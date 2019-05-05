@@ -2,7 +2,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Index from './pages/index'
 import 'taro-ui/dist/style/index.scss'
-import { tabStore } from './store/tabStore'
+import { counterStore } from './store/counter'
+import tabStore from './store/tabStore'
 import '@tarojs/async-await'
 
 import './app.scss'
@@ -14,6 +15,7 @@ import './app.scss'
 // }
 
 const store = {
+  counterStore,
   tabStore
 }
 
@@ -26,7 +28,7 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: ['pages/index/index','pages/user/user'],
+    pages: ['pages/index/index', 'pages/user/user'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
@@ -46,11 +48,7 @@ class App extends Component {
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
   render() {
-    return (
-      <Provider store={store}>
-        <Index />
-      </Provider>
-    )
+    return <Provider store={store} />
   }
 }
 

@@ -1,32 +1,39 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import { observable, action } from 'mobx'
+// import { observable, action } from 'mobx'
 import styles from './tabs.module.scss'
 import './reset.scss'
 import { AtTabBar } from 'taro-ui'
-import { TabStore } from '../../store/tabStore'
-import { ComponentType } from 'react'
-
-export interface ComTabsProps {
-  // ...
-  tabStore: TabStore
-}
+import { ITabStore } from 'src/store/tabStore'
 
 @inject('tabStore')
 @observer
-class ComTabs extends Component<ComTabsProps, {}> {
+class ComTabs extends Component<
+  {
+    tabStore: ITabStore
+  },
+  {}
+> {
   constructor() {
     super(...arguments)
   }
 
-  componentDidMount() {
-    console.log(this.props.tabStore, 'props-========props')
-  }
+  componentDidMount() {}
 
   componentWillUnmount() {}
 
+  change(idx: number) {
+    const {
+      tabStore: { changeTab }
+    } = this.props
+    changeTab(idx)
+  }
+
   render() {
+    const {
+      tabStore: { current }
+    } = this.props
     return (
       <AtTabBar
         fixed
@@ -34,11 +41,11 @@ class ComTabs extends Component<ComTabsProps, {}> {
           { title: '明细', iconType: 'calendar' },
           { title: '我的', iconType: 'user' }
         ]}
-        onClick={this.props.tabStore.changeTab}
-        current={this.props.tabStore.tabsCurrent}
+        onClick={this.change}
+        current={current}
       />
     )
   }
 }
 
-export default ComTabs as ComponentType
+export default ComTabs as any

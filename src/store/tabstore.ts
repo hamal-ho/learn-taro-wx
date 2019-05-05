@@ -1,15 +1,18 @@
 import { observable, action } from 'mobx'
 
-export class TabStore {
-  @observable tabsCurrent = 0
+export interface ITabStore {
+  current: number
+  changeTab: (idx: number) => void
+}
 
+class TabStore implements ITabStore {
+  @observable current = 0
 
-  @action
-  changeTab(idx: number) {
-    this.tabsCurrent = idx
-    console.log('=====',idx);
-    
+  @action.bound
+  changeTab(idx) {
+    this.current = idx
+    console.log(this.current, '=====this.current')
   }
 }
 
-export const tabStore = new TabStore()
+export default new TabStore()

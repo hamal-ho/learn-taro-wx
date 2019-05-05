@@ -28,7 +28,9 @@ class Index extends Component<{}, {}> {
     console.log('componentWillReact')
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  
+  }
 
   componentWillUnmount() {}
 
