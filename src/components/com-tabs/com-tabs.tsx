@@ -5,7 +5,8 @@ import { observer, inject } from '@tarojs/mobx'
 import styles from './tabs.module.scss'
 import './reset.scss'
 import { AtTabBar } from 'taro-ui'
-import { ITabStore } from 'src/store/tabStore'
+import { ITabStore } from '@/store/tabStore'
+import { ComponentType } from 'react'
 
 @inject('tabStore')
 @observer
@@ -15,6 +16,8 @@ class ComTabs extends Component<
   },
   {}
 > {
+
+  
   constructor() {
     super(...arguments)
   }
@@ -48,4 +51,4 @@ class ComTabs extends Component<
   }
 }
 
-export default ComTabs as any
+export default ComTabs as ComponentType
